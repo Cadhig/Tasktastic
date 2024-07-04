@@ -6,10 +6,9 @@ export default function LoginScreen() {
     return (
         <div className='flex h-full'>
             <div className='w-full flex'>
-                <img src={placeholder} alt="placeholder" class="h-full" />
+                <img src={placeholder} alt="placeholder" className="h-full" />
             </div>
             <div className='flex flex-col items-center w-full justify-center gap-4'>
-                <h1 className='tasktastic-font text-4xl text-tasktastic-base'>Tasktastic</h1>
                 <Login />
             </div>
         </div>

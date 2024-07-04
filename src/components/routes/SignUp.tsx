@@ -1,5 +1,5 @@
 
-import { SignUp } from "../AccountAction";
+import { SignUp } from "../AccountActions";
 
 export default function SignUpPage() {
 

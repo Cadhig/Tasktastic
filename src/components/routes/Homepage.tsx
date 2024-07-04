@@ -1,5 +1,5 @@
 import placeholder from '../../assets/Placeholder.jpg'
-import { Login } from '../AccountAction'
+import { Login } from '../AccountActions'
 
 export default function LoginScreen() {
 

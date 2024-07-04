@@ -32,11 +32,6 @@ export default Users.init(
             defaultValue: DataTypes.NOW,
             allowNull: false
         },
-        list_type: {
-            type: DataTypes.STRING,
-            defaultValue: 'grid',
-            allowNull: false,
-        }
     },
     {
         sequelize,

@@ -1,5 +1,5 @@
 
-import { SignUp } from "../interactivity/AccountAction";
+import { SignUp } from "../AccountAction";
 
 export default function SignUpPage() {
 

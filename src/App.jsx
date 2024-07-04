@@ -1,14 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import Homepage from './components/pages/Homepage'
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <p className='text-green-800 font-bold'>test</p>
+    <div className='h-svh'>
+      <Homepage />
     </div>
   )
 }

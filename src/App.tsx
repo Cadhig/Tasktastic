@@ -1,4 +1,4 @@
-import Homepage from './components/pages/Homepage'
+import Homepage from './components/routes/Homepage'
 function App() {
 
   return (

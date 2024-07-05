@@ -31,7 +31,6 @@ export function Login() {
         } catch (error) {
             alert('Error: ' + error);
         }
-        console.log('here')
         return navigate('/notes')
     };
 

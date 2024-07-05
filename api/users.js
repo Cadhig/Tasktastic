@@ -59,8 +59,6 @@ router.post('/signup', (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
-    console.log(req.body)
-    console.log(username, password)
     try {
         const foundUser = await Users.findOne({
             attributes: ['id', 'username', 'password'],
@@ -68,7 +66,6 @@ router.post('/login', async (req, res) => {
                 username: username,
             }
         })
-        console.log(foundUser.password)
         if (foundUser === null) {
             res.status(401).json({ error: 'Incorrect username/password' })
             return

@@ -1,7 +1,10 @@
+import { NotesMain, NotesSidebar } from "../NotesActions"
+export default function Notes() {
 
-export default function Notes(){
-
-    return(
-        <p>this page works</p>
+    return (
+        <div>
+            <NotesSidebar />
+            <NotesMain />
+        </div>
     )
 }

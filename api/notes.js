@@ -3,7 +3,7 @@ import { Notes } from '../models/index.js'
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    console.log(req.session.user_id)
+    console.log(req.session)
     if (!req.session.user_id) {
         return res.status(401).json({ error: 'Unauthorized' })
     }

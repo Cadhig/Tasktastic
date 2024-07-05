@@ -21,6 +21,7 @@ export function Login() {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
             });
 
             if (response.ok) {

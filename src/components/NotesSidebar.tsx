@@ -15,7 +15,7 @@ export function NotesSidebar() {
             fetchNotes();
         }
         return () => { ignore = true }
-    }, [])
+    }, [notes])
 
     const fetchNotes = async () => {
         try {
@@ -30,9 +30,8 @@ export function NotesSidebar() {
             if (response.ok) {
                 const notes = await response.json()
                 setNotes(notes)
-                console.log('Login successful');
             } else {
-                alert('Failed to login');
+                alert('Failed to retrieve notes');
             }
         } catch (error) {
             alert('Error: ' + error);

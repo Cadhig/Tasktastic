@@ -1,5 +1,10 @@
+import { useState, useEffect } from "react";
 
 export function NotesSidebar() {
+    const [data, setData] = useState()
+    useEffect(() => {
+        showNotes();
+    }, [])
     const showNotes = async () => {
         try {
             const response = await fetch(`http://localhost:6002/api/notes`, {
@@ -11,7 +16,8 @@ export function NotesSidebar() {
             });
 
             if (response.ok) {
-                const returnedCall = await response.json()
+                const data = await response.json()
+                setData(data)
                 console.log('Login successful');
             } else {
                 alert('Failed to login');
@@ -20,7 +26,7 @@ export function NotesSidebar() {
             alert('Error: ' + error);
         }
     };
-    showNotes()
+    console.log(data)
     return (
         <NotesSidebarContents />
     )

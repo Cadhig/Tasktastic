@@ -27,7 +27,7 @@ export function Login() {
             if (response.ok) {
                 console.log('Login successful');
             } else {
-                alert('Failed to login');
+                return alert('Failed to login');
             }
         } catch (error) {
             alert('Error: ' + error);

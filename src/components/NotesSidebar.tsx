@@ -1,11 +1,23 @@
 import { useState, useEffect } from "react";
 
+interface Note {
+    created_at: string,
+    description: string,
+    title: string,
+    updated_at: string
+}
 export function NotesSidebar() {
-    const [data, setData] = useState()
+    const [notes, setNotes] = useState<Note[]>([])
+
     useEffect(() => {
-        showNotes();
+        let ignore = false;
+        if (ignore === false) {
+            fetchNotes();
+        }
+        return () => { ignore = true }
     }, [])
-    const showNotes = async () => {
+
+    const fetchNotes = async () => {
         try {
             const response = await fetch(`http://localhost:6002/api/notes`, {
                 method: "GET",
@@ -16,8 +28,8 @@ export function NotesSidebar() {
             });
 
             if (response.ok) {
-                const data = await response.json()
-                setData(data)
+                const notes = await response.json()
+                setNotes(notes)
                 console.log('Login successful');
             } else {
                 alert('Failed to login');
@@ -26,20 +38,14 @@ export function NotesSidebar() {
             alert('Error: ' + error);
         }
     };
-    console.log(data)
     return (
-        <NotesSidebarContents />
-    )
-}
-
-function NotesSidebarContents() {
-
-    return (
-        <div className="border border-black">
-
-            <p>
-                this is the sidebar
-            </p>
+        <div>
+            {notes.map((note, index) => {
+                return <div key={index} className="border border-black">
+                    <p>{note.title}</p>
+                    <p>{note.created_at}</p>
+                </div>
+            })}
         </div>
     )
 }

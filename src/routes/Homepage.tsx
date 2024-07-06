@@ -1,5 +1,5 @@
-import placeholder from '../../assets/Placeholder.jpg'
-import { Login } from '../LoginOrSignupForm'
+
+import { Login } from '../components/LoginOrSignupForm'
 
 export default function LoginScreen() {
 

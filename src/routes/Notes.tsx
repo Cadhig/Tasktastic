@@ -1,5 +1,5 @@
-import { NotesSidebar } from "../NotesSidebar"
-import { NotesMain } from "../NotesMain"
+import { NotesSidebar } from "../components/NotesSidebar"
+import { NotesMain } from "../components/NotesMain"
 export default function Notes() {
 
     return (

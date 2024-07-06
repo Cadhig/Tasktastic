@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Homepage from './components/routes/Homepage.tsx'
-import SignUp from './components/routes/SignUp.tsx'
-import Notes from './components/routes/Notes.tsx'
+import Homepage from './routes/Homepage.tsx'
+import SignUp from './routes/SignUp.tsx'
+import Notes from './routes/Notes.tsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "notes",
-    element: <Notes/>
+    element: <Notes />
   }
 ]);
 

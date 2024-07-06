@@ -1,23 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Note } from "../interfaces";
 
-interface Note {
-    created_at: string,
-    description: string,
-    title: string,
-    updated_at: string
-}
 export function NotesSidebar() {
     const [notes, setNotes] = useState<Note[]>([])
 
-    useEffect(() => {
-        let ignore = false;
-        if (ignore === false) {
-            fetchNotes();
-        }
-        return () => { ignore = true }
-    }, [notes])
-
     const fetchNotes = async () => {
+        if (notes.length > 0) {
+            return
+        }
         try {
             const response = await fetch(`http://localhost:6002/api/notes`, {
                 method: "GET",
@@ -37,6 +27,7 @@ export function NotesSidebar() {
             alert('Error: ' + error);
         }
     };
+    fetchNotes()
     return (
         <div>
             {notes.map((note, index) => {

@@ -15,7 +15,6 @@ export function NotesMain(props: any) {
         console.log(found)
         setTitle(found.title)
         setDescription(found.description)
-        fetchNotes(props.setNotes)
     }, [found])
 
     let data = {
@@ -34,6 +33,7 @@ export function NotesMain(props: any) {
             });
 
             if (response.ok) {
+                fetchNotes(props.setNotes)
                 console.log('res ok')
             } else {
                 alert('Failed to update note');
@@ -42,6 +42,7 @@ export function NotesMain(props: any) {
             alert('Error: ' + error);
         }
     }
+
     return (
         <div className="border border-black">
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />

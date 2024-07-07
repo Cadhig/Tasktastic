@@ -9,7 +9,7 @@ export default function Notes() {
     return (
         <div>
             <NotesSidebar notes={notes} setNotes={setNotes} setNoteId={setNoteId} />
-            <NotesMain notes={notes} noteId={noteId} />
+            <NotesMain notes={notes} noteId={noteId} setNotes={setNotes} />
         </div>
     )
 }

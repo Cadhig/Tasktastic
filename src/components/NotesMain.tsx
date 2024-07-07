@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { Note } from "../interfaces";
 
-export function NotesMain() {
-    const [notes, setNotes] = useState<Note[]>([])
+
+export function NotesMain(props: any) {
 
     const fetchNotes = async () => {
-        if (notes.length > 0) {
+        if (props.notes.length > 0) {
             return
         }
         try {
@@ -19,7 +17,7 @@ export function NotesMain() {
 
             if (response.ok) {
                 const notes = await response.json()
-                setNotes(notes)
+                props.setNotes(notes)
             } else {
                 alert('Failed to retrieve notes');
             }

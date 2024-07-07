@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { Note } from "../interfaces";
 
-export function NotesSidebar() {
-    const [notes, setNotes] = useState<Note[]>([])
+export function NotesSidebar(props: any) {
 
     const fetchNotes = async () => {
-        if (notes.length > 0) {
+        if (props.notes.length > 0) {
             return
         }
         try {
@@ -19,7 +17,7 @@ export function NotesSidebar() {
 
             if (response.ok) {
                 const notes = await response.json()
-                setNotes(notes)
+                props.setNotes(notes)
             } else {
                 alert('Failed to retrieve notes');
             }
@@ -30,7 +28,7 @@ export function NotesSidebar() {
     fetchNotes()
     return (
         <div>
-            {notes.map((note, index) => {
+            {props.notes.map((note: Note, index:number) => {
                 return <div key={index} className="border border-black">
                     <p>{note.title}</p>
                     <p>{note.created_at}</p>

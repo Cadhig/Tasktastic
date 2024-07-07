@@ -1,38 +1,54 @@
-import { useState } from "react";
-import { Note } from "../interfaces";
+import { useState, useEffect } from "react";
+import { Note } from "../types";
+import { fetchNotes } from "../utils/api";
 
-export function NotesMain() {
-    const [notes, setNotes] = useState<Note[]>([])
+export function NotesMain(props: any) {
+    function noteById(note: any) {
+        return note.id === props.noteId
+    }
 
-    const fetchNotes = async () => {
-        if (notes.length > 0) {
-            return
-        }
+    const found = props.notes.find(noteById) || 'select a note'
+    const [title, setTitle] = useState<string>()
+    const [description, setDescription] = useState<string>()
+
+    useEffect(() => {
+        console.log(found)
+        setTitle(found.title)
+        setDescription(found.description)
+    }, [found])
+
+    let data = {
+        title: title,
+        description: description
+    }
+    async function updateNote() {
         try {
-            const response = await fetch(`http://localhost:6002/api/notes`, {
-                method: "GET",
+            const response = await fetch(`http://localhost:6002/api/notes/${found.id}`, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
+                body: JSON.stringify(data),
                 credentials: "include"
             });
 
             if (response.ok) {
-                const notes = await response.json()
-                setNotes(notes)
+                fetchNotes(props.setNotes)
+                console.log('res ok')
             } else {
-                alert('Failed to retrieve notes');
+                alert('Failed to update note');
             }
         } catch (error) {
             alert('Error: ' + error);
         }
-    };
-    fetchNotes()
+    }
+
     return (
         <div className="border border-black">
-            <p>
-                this is main
-            </p>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+            <button onClick={() => updateNote()}> test</button>
+            {found.description}
         </div>
     )
 }

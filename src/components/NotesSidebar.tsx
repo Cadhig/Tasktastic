@@ -1,35 +1,25 @@
-import { Note } from "../interfaces";
+import { useEffect } from "react";
+import { Note } from "../types";
+import { fetchNotes } from "../utils/api";
 
-export function NotesSidebar(props: any) {
+export interface NoteSidebarProps {
+    notes: Note[],
+    setNotes: (props: Note[]) => void,
+    setNoteId: (props: number) => void
+}
 
-    const fetchNotes = async () => {
-        if (props.notes.length > 0) {
-            return
+export function NotesSidebar(props: NoteSidebarProps) {
+    useEffect(() => {
+        let ignore = false
+        if (ignore == false) {
+            fetchNotes(props.setNotes)
         }
-        try {
-            const response = await fetch(`http://localhost:6002/api/notes`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: "include"
-            });
-
-            if (response.ok) {
-                const notes = await response.json()
-                props.setNotes(notes)
-            } else {
-                alert('Failed to retrieve notes');
-            }
-        } catch (error) {
-            alert('Error: ' + error);
-        }
-    };
-    fetchNotes()
+        return () => { ignore = true }
+    }, [])
     return (
         <div>
-            {props.notes.map((note: Note, index:number) => {
-                return <div key={index} className="border border-black">
+            {props.notes.map((note, index: number) => {
+                return <div key={index} className="border border-black" onClick={() => props.setNoteId(note.id)}>
                     <p>{note.title}</p>
                     <p>{note.created_at}</p>
                 </div>

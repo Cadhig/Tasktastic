@@ -4,10 +4,12 @@ import Homepage from './routes/Homepage.tsx'
 import SignUp from './routes/SignUp.tsx'
 import Notes from './routes/Notes.tsx'
 import './index.css'
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import NewNote from './routes/NewNote.tsx'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
   {
     path: "notes",
     element: <Notes />
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

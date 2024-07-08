@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Note } from "../types";
 import { fetchNotes } from "../utils/api";
+import { Link } from "react-router-dom";
 
 export function NotesMain(props: any) {
     function noteById(note: any) {
@@ -47,8 +48,8 @@ export function NotesMain(props: any) {
         <div className="border border-black">
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
             <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-            <button onClick={() => updateNote()}> test</button>
-            {found.description}
+            <button onClick={() => updateNote()}>Update</button>
+            <button>New Note</button>
         </div>
     )
 }

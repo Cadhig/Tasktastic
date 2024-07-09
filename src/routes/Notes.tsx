@@ -7,7 +7,7 @@ export default function Notes() {
     const [noteId, setNoteId] = useState<number | undefined>()
 
     return (
-        <div>
+        <div className="flex w-full h-full gap-4 items-center">
             <NotesSidebar notes={notes} setNotes={setNotes} setNoteId={setNoteId} />
             <NotesMain notes={notes} noteId={noteId} setNotes={setNotes} />
         </div>

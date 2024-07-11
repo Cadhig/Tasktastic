@@ -27,6 +27,27 @@ export default function NotesMain(props: NoteMainProps & any) {
         title: title,
         description: description
     }
+    async function deleteNote() {
+        try {
+            const response = await fetch(`http://localhost:6002/api/notes/${found.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                fetchNotes(props.setNotes)
+                props.noteView(true)
+                console.log('res ok')
+            } else {
+                alert('Failed to update note');
+            }
+        } catch (error) {
+            alert('Error: ' + error);
+        }
+    }
     async function updateNote() {
         try {
             const response = await fetch(`http://localhost:6002/api/notes/${found.id}`, {
@@ -56,6 +77,7 @@ export default function NotesMain(props: NoteMainProps & any) {
             <div className="flex gap-4 text-white">
                 <button onClick={() => updateNote()} className="bg-tasktastic-base-2 hover:bg-tasktastic-base-2/90 text-sm p-1 rounded">Update</button>
                 <button className="bg-tasktastic-base hover:bg-tasktastic-hover active:bg-tasktastic-active text-sm p-1 rounded" onClick={() => props.noteView(true)}>New Note</button>
+                <button className="bg-red-400 hover:bg-red-500 active:bg-red-600 text-sm p-1 rounded" onClick={() => deleteNote()}>Delete</button>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Note } from "../types";
 import { fetchNotes } from "../utils/api";
+import { X } from "lucide-react";
 
 export interface NoteSidebarProps {
     notes: Note[],
@@ -26,9 +27,9 @@ export function NotesSidebar(props: NoteSidebarProps & any) {
                     console.log('work')
                     props.noteView(false)
                 }
-                return <div key={index} className="bg-tasktastic-base hover:bg-tasktastic-hover active:bg-tasktastic-active rounded h-8 w-32 flex items-center p-2" onClick={() => noteButton()}>
+                return <span key={index} className="bg-tasktastic-base hover:bg-tasktastic-hover active:bg-tasktastic-active flex items-center rounded h-8 w-32 text-md p-2" onClick={() => noteButton()}>
                     <p className="truncate cursor-pointer">{note.title}</p>
-                </div>
+                </span>
             })}
         </div>
     )

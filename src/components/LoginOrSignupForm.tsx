@@ -89,7 +89,7 @@ export function SignUp() {
     return (
         <div className="flex justify-center">
             <div className="flex h-full flex-col items-center justify-center">
-                <div className="bg-tasktastic-box py-6 px-12 rounded-lg shadow-2xl flex flex-col gap-4">
+                <div className="py-6 px-12 rounded-lg shadow-2xl flex flex-col gap-4">
                     <h1 className="text-3xl tasktastic-font text-tasktastic-base">Welcome to Tasktastic!</h1>
                     <h2 className="text-xl text-center cursor-default">Create an Account</h2>
                     <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className="border border-black/10 p-3 w-80 rounded-lg appearance-none bg-tasktastic-input-background" />

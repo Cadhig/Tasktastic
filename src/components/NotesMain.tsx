@@ -45,11 +45,13 @@ export function NotesMain(props: any) {
     }
 
     return (
-        <div className="border border-black">
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-            <button onClick={() => updateNote()}>Update</button>
-            <button>New Note</button>
+        <div className="shadow-2xl h-1/2 rounded flex flex-col w-full items-center gap-4 p-4 sm:text-xl">
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full border border-black/10 hover:border-black/20 rounded p-1 font-bold" />
+            <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="w-full border border-black/10 hover:border-black/20 h-full rounded p-1" />
+            <div className="flex gap-4 text-white">
+                <button onClick={() => updateNote()} className="bg-tasktastic-base-2 hover:bg-tasktastic-base-2/90 text-sm p-1 rounded">Update</button>
+                <button className="bg-tasktastic-base hover:bg-tasktastic-hover active:bg-tasktastic-active text-sm p-1 rounded">New Note</button>
+            </div>
         </div>
     )
 }

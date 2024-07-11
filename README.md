@@ -5,7 +5,7 @@ Tasktastic is a simple note-taking app where users can create, update, and delet
 
 ## Tech Used
 - **Frontend**: React, TypeScript, TailwindCSS
-- **Backend**: Node, Express.js
+- **Backend**: Node, Express.js, express-session
 - **Database**: PostgreSQL
 
 ## Getting Started

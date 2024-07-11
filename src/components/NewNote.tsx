@@ -2,10 +2,15 @@ import { useState, useEffect } from "react";
 import { Note } from "../types";
 import { fetchNotes } from "../utils/api";
 
-export default function NewNote(props: any) {
+interface NewNoteProps {
+    setNotes: (props: Note[]) => void,
+}
+
+export default function NewNote(props: NewNoteProps) {
 
     const [title, setTitle] = useState<string>()
     const [description, setDescription] = useState<string>()
+
 
     let data = {
         title: title,

@@ -2,12 +2,18 @@ import { useState, useEffect } from "react";
 import { Note } from "../types";
 import { fetchNotes } from "../utils/api";
 
-export default function NotesMain(props: any) {
+export interface NoteMainProps {
+    notes: Note[],
+    setNotes: (props: Note[]) => void,
+    setNoteId: (props: number) => void,
+}
+
+export default function NotesMain(props: NoteMainProps & any) {
     function noteById(note: Note) {
         return note.id === props.noteId
     }
 
-    const found = props.notes.find(noteById) || 'select a note'
+    const found = props.notes.find(noteById) || "void"
     const [title, setTitle] = useState<string>()
     const [description, setDescription] = useState<string>()
 

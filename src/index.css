@@ -8,3 +8,20 @@
   font-weight: bold;
   font-style: normal;
 }
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b5aa9d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1978c;
+}

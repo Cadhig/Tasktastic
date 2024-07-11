@@ -43,8 +43,8 @@ export default function NewNote(props: NewNoteProps) {
             <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full border border-black/10 hover:border-black/20 rounded p-1 font-bold" />
             <textarea value={description} placeholder="Todos? Grocery list? Whatever your heart desires..." onChange={(e) => setDescription(e.target.value)} className="w-full border border-black/10 hover:border-black/20 h-full rounded p-1" />
             <div className="flex gap-4 text-white">
-                <button onClick={() => createNewNote()} className="bg-tasktastic-base-2 hover:bg-tasktastic-base-2/90 text-sm p-1 rounded">Create</button>
-                <button className="bg-tasktastic-base hover:bg-tasktastic-hover active:bg-tasktastic-active text-sm p-1 rounded">New Note</button>
+                <button onClick={() => createNewNote()} className="bg-tasktastic-base-2 hover:bg-tasktastic-base-2/90 text-sm py-2 px-4 rounded">Create</button>
+                <button className="bg-tasktastic-base hover:bg-tasktastic-hover active:bg-tasktastic-active text-sm py-2 px-4 rounded">New Note</button>
             </div>
         </div>
     )

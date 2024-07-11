@@ -2,29 +2,19 @@ import { useState, useEffect } from "react";
 import { Note } from "../types";
 import { fetchNotes } from "../utils/api";
 
-export default function NotesMain(props: any) {
-    function noteById(note: Note) {
-        return note.id === props.noteId
-    }
+export default function NewNote(props: any) {
 
-    const found = props.notes.find(noteById) || 'select a note'
     const [title, setTitle] = useState<string>()
     const [description, setDescription] = useState<string>()
-
-    useEffect(() => {
-        console.log(found)
-        setTitle(found.title)
-        setDescription(found.description)
-    }, [found])
 
     let data = {
         title: title,
         description: description
     }
-    async function updateNote() {
+    async function createNewNote() {
         try {
-            const response = await fetch(`http://localhost:6002/api/notes/${found.id}`, {
-                method: "PUT",
+            const response = await fetch(`http://localhost:6002/api/notes`, {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -45,11 +35,11 @@ export default function NotesMain(props: any) {
 
     return (
         <div className="shadow-2xl h-1/2 rounded flex flex-col xl:w-3/4 w-full items-center gap-4 p-4 sm:text-xl">
-            <input type="text" value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} className="w-full border border-black/10 hover:border-black/20 rounded p-1 font-bold" />
+            <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full border border-black/10 hover:border-black/20 rounded p-1 font-bold" />
             <textarea value={description} placeholder="Todos? Grocery list? Whatever your heart desires..." onChange={(e) => setDescription(e.target.value)} className="w-full border border-black/10 hover:border-black/20 h-full rounded p-1" />
             <div className="flex gap-4 text-white">
-                <button onClick={() => updateNote()} className="bg-tasktastic-base-2 hover:bg-tasktastic-base-2/90 text-sm p-1 rounded">Update</button>
-                <button className="bg-tasktastic-base hover:bg-tasktastic-hover active:bg-tasktastic-active text-sm p-1 rounded" onClick={() => props.noteView(true)}>New Note</button>
+                <button onClick={() => createNewNote()} className="bg-tasktastic-base-2 hover:bg-tasktastic-base-2/90 text-sm p-1 rounded">Create</button>
+                <button className="bg-tasktastic-base hover:bg-tasktastic-hover active:bg-tasktastic-active text-sm p-1 rounded">New Note</button>
             </div>
         </div>
     )
